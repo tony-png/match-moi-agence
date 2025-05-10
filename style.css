@@ -1,0 +1,114 @@
+/* Import Tailwind base, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define custom component styles using @apply */
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center px-6 py-3 rounded-lg shadow-md font-semibold text-white transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2;
+    }
+    .btn-primary {
+        @apply bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 focus:ring-pink-500;
+        /* Slightly lift and grow on hover/focus for an "addictive" feel */
+        @apply transform hover:scale-105 focus:scale-105;
+    }
+    .btn-secondary {
+        @apply bg-gray-200 hover:bg-gray-300 text-gray-700 focus:ring-gray-400;
+        @apply transform hover:scale-105 focus:scale-105;
+    }
+    .btn-success {
+        @apply bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 focus:ring-green-500;
+        @apply transform hover:scale-105 focus:scale-105;
+    }
+    .input-field {
+        @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-shadow;
+    }
+}
+
+/* View transition styles */
+.view {
+    @apply w-full absolute top-0 left-0 opacity-0 transition-all duration-500 ease-in-out;
+    transform: translateX(100%); /* Initially off-screen to the right */
+    pointer-events: none; /* Prevent interaction when not active */
+}
+
+.view.active {
+    @apply opacity-100;
+    transform: translateX(0);
+    pointer-events: auto;
+    z-index: 10; /* Ensure active view is on top */
+}
+
+.view.exiting-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.view.exiting-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* If you want a different animation for 'back' buttons, you'd need JS to add a class like 'entering-from-left' */
+.view.entering-from-left {
+    transform: translateX(-100%);
+}
+
+.view.entering-from-right {
+    transform: translateX(100%);
+}
+
+/* Ensure only the active view is truly interactive, and others are fully gone */
+.view:not(.active) {
+    /* display: none; /* This would break transitions if applied immediately */
+    /* We use pointer-events: none and manage z-index */
+    z-index: 1;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+header h1 {
+    color: #5a3e2b; /* A coffee-like color */
+}
+
+button {
+    background-color: #775541; /* A warmer coffee color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5a3e2b;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #777;
+} 

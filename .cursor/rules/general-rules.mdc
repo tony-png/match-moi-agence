@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+The general project description is in docs/description.md, always refer to this doc before modifying the project. If things are not clear, ask the user
+
+The general description for the front-end is in docs/front-end-plan.md, please refer to this before working with the front end. 
+
+
+Follow this rule!
