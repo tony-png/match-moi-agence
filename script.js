@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const views = document.querySelectorAll('.view');
-    const buttons = document.querySelectorAll('button[data-goto]');
+    const navButtons = document.querySelectorAll('button[data-goto]');
     let currentView = document.querySelector('.view.active');
 
     // Determine the order of views for forward/backward navigation sense
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500); // Match CSS transition duration (or slightly less to remove class as anim starts)
     }
 
-    buttons.forEach(button => {
-        button.addEventListener('click', (e) => {
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
             const targetViewId = button.getAttribute('data-goto');
             if (targetViewId) {
                 // A simple way to check if it's a 'back' button is by its text or a data-attribute.
@@ -91,4 +91,56 @@ document.addEventListener('DOMContentLoaded', () => {
         currentView.style.transform = 'translateX(0)';
         currentView.style.opacity = '1';
     }
+
+    // --- Video Modal Logic ---
+    const videoModal = document.getElementById('videoModal');
+    const modalVideoPlayer = document.getElementById('modalVideoPlayer');
+    const closeModalButton = document.getElementById('closeModalButton');
+    const thumbnailContainers = document.querySelectorAll('.thumbnail-container');
+
+    thumbnailContainers.forEach(container => {
+        container.addEventListener('click', () => {
+            const videoSrc = container.getAttribute('data-video-src');
+            if (videoSrc && modalVideoPlayer && videoModal) {
+                modalVideoPlayer.src = videoSrc;
+                videoModal.classList.remove('hidden');
+                modalVideoPlayer.play().catch(error => console.error("Error attempting to play video:", error));
+            }
+        });
+    });
+
+    function closeVideoModal() {
+        if (videoModal && modalVideoPlayer) {
+            videoModal.classList.add('hidden');
+            modalVideoPlayer.pause();
+            modalVideoPlayer.src = ""; // Important to stop video loading/playing
+        }
+    }
+
+    if (closeModalButton) {
+        closeModalButton.addEventListener('click', closeVideoModal);
+    }
+    // Optional: Close modal by clicking on the backdrop
+    if (videoModal) {
+        videoModal.addEventListener('click', (event) => {
+            if (event.target === videoModal) { // Only if backdrop itself is clicked
+                closeVideoModal();
+            }
+        });
+    }
+
+    // --- J'aime Button Logic ---
+    const likeButtons = document.querySelectorAll('.btn-like');
+    likeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('liked');
+            // You might want to change the SVG fill or text here too
+            const heartIcon = button.querySelector('svg path');
+            if (button.classList.contains('liked')) {
+                if(heartIcon) heartIcon.setAttribute('fill', 'currentColor');
+            } else {
+                if(heartIcon) heartIcon.setAttribute('fill', 'none');
+            }
+        });
+    });
 }); 

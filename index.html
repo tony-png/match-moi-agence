@@ -94,25 +94,51 @@
             <section id="discovery" class="view hidden">
                 <h2 class="text-2xl sm:text-3xl font-semibold text-gray-700 mb-6">Étape 4: Découverte & Sélection</h2>
                 <p class="text-gray-600 mb-6 sm:mb-8">Parcourez les profils anonymes.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 sm:mb-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6 sm:mb-8">
                     <!-- Mock Profile Card 1 -->
-                    <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
-                        <div class="w-full h-32 bg-gray-300 rounded mb-3 animate-pulse"></div>
+                    <div class="profile-card bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col">
+                        <div class="relative w-full h-40 bg-gray-300 rounded mb-3 cursor-pointer group thumbnail-container" data-video-src="users/homme1.mp4">
+                            <div class="absolute inset-0 bg-black bg-opacity-25 group-hover:bg-opacity-40 transition-opacity flex items-center justify-center rounded">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 opacity-75 group-hover:opacity-100 transform group-hover:scale-110 transition-all">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                                </svg>
+                            </div>
+                        </div>
                         <p class="text-gray-700 font-semibold">Profil Anonyme 1</p>
-                        <p class="text-sm text-gray-500">Quelques traits de personnalité...</p>
+                        <p class="text-sm text-gray-500 mb-3 flex-grow">Quelques traits de personnalité...</p>
+                        <button class="btn-like w-full mt-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                            </svg>
+                            J'aime
+                        </button>
                     </div>
                     <!-- Mock Profile Card 2 -->
-                    <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
-                        <div class="w-full h-32 bg-gray-300 rounded mb-3 animate-pulse"></div>
+                    <div class="profile-card bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col">
+                        <div class="relative w-full h-40 bg-gray-400 rounded mb-3 cursor-pointer group thumbnail-container" data-video-src="users/homme2.mp4">
+                            <div class="absolute inset-0 bg-black bg-opacity-25 group-hover:bg-opacity-40 transition-opacity flex items-center justify-center rounded">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 opacity-75 group-hover:opacity-100 transform group-hover:scale-110 transition-all">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                                </svg>
+                            </div>
+                        </div>
                         <p class="text-gray-700 font-semibold">Profil Anonyme 2</p>
-                        <p class="text-sm text-gray-500">Énergie et non-verbaux...</p>
+                        <p class="text-sm text-gray-500 mb-3 flex-grow">Énergie et non-verbaux...</p>
+                        <button class="btn-like w-full mt-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                            </svg>
+                            J'aime
+                        </button>
                     </div>
                 </div>
                  <div class="flex flex-col items-center">
                     <button data-goto="match-notification" class="btn btn-primary group mb-3">
-                        Simuler un Match
+                        Envoyer les choix
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2 inline-block">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
                         </svg>
                     </button>
                     <button data-goto="video-presentation" class="text-sm text-gray-500 hover:text-pink-500 hover:underline focus:outline-none">
@@ -164,6 +190,21 @@
             <p class="text-sm text-gray-500">&copy; 2024 Match-Moi Agence</p>
         </footer>
     </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[80vh] flex flex-col overflow-hidden">
+            <video id="modalVideoPlayer" class="w-full h-auto object-contain flex-grow" controls>
+                <!-- Source will be set by JavaScript -->
+            </video>
+            <button id="closeModalButton" class="absolute top-4 right-4 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 focus:outline-none">
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-gray-800">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html> 
