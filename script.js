@@ -17,52 +17,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Override isGoingBack if we can infer from view order and it's not explicitly set by a 'back' button.
         // This helps if direct navigation (not via a specifically marked 'back' button) occurs.
-        if (currentIndex !== -1 && nextIndex !== -1 && !isGoingBack) {
+        if (currentIndex !== -1 && nextIndex !== -1 && !isGoingBack && currentIndex !== nextIndex) {
             isGoingBack = nextIndex < currentIndex;
         }
 
-        // Make all views non-interactive initially for the transition
-        views.forEach(v => v.style.pointerEvents = 'none');
-
+        // Current view transitions out
         if (currentView) {
             currentView.classList.remove('active');
-            // Add exiting class based on direction
             if (isGoingBack) {
                 currentView.classList.add('exiting-right');
             } else {
                 currentView.classList.add('exiting-left');
             }
+            // Add 'hidden' after transition
+            setTimeout(() => {
+                currentView.classList.remove('exiting-left', 'exiting-right');
+                currentView.classList.add('hidden'); 
+            }, 500); // Match CSS transition duration
         }
 
-        // Prepare the next view for entry
+        // Next view transitions in
+        nextView.classList.remove('hidden'); // Make it part of the layout before transition
         nextView.classList.remove('exiting-left', 'exiting-right'); // Clean up any lingering exit states
+        
         if (isGoingBack) {
             nextView.classList.add('entering-from-left');
         } else {
             nextView.classList.add('entering-from-right');
         }
+        
         // Force a reflow before adding 'active' to ensure transition plays
-        // Reading a property like offsetHeight is a common way to trigger reflow.
         void nextView.offsetHeight;
 
         nextView.classList.add('active');
-        // Remove entry classes after transition starts to allow CSS to take over translateX(0)
-        // The timeout should roughly match the transition duration or be slightly less.
+        
+        // Clean up entering classes after transition starts
         setTimeout(() => {
             nextView.classList.remove('entering-from-left', 'entering-from-right');
-            // Re-enable pointer events for the new active view
-            nextView.style.pointerEvents = 'auto';
-
-            // Clean up exiting classes from the old view after transition
-            if (currentView) {
-                currentView.classList.remove('exiting-left', 'exiting-right');
-            }
-            currentView = nextView;
-        }, 500); // Corresponds to transition duration in style.css
+            currentView = nextView; // Update currentView after transition is likely complete
+        }, 500); // Match CSS transition duration (or slightly less to remove class as anim starts)
     }
 
     buttons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
             const targetViewId = button.getAttribute('data-goto');
             if (targetViewId) {
                 // A simple way to check if it's a 'back' button is by its text or a data-attribute.
@@ -80,15 +77,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize the first view
+    // Initialize the first view (which should not be hidden by default in HTML)
     if (currentView) {
+        currentView.classList.remove('hidden'); // Ensure first active view is not hidden
         currentView.classList.remove('entering-from-left', 'entering-from-right', 'exiting-left', 'exiting-right');
-        currentView.style.pointerEvents = 'auto'; // Ensure initial view is interactive
-    } else if (views.length > 0) {
+        // Ensure it's correctly positioned if it wasn't the default active or if classes were misapplied
+        currentView.style.transform = 'translateX(0)';
+        currentView.style.opacity = '1';
+    } else if (views.length > 0) { // Fallback if no view has .active initially
         currentView = views[0];
+        currentView.classList.remove('hidden');
         currentView.classList.add('active');
-        currentView.style.pointerEvents = 'auto';
-        // Ensure it's correctly positioned if it wasn't the default active
         currentView.style.transform = 'translateX(0)';
         currentView.style.opacity = '1';
     }
