@@ -97,7 +97,8 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6 sm:mb-8">
                     <!-- Mock Profile Card 1 -->
                     <div class="profile-card bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col">
-                        <div class="relative w-full h-40 bg-gray-300 rounded mb-3 cursor-pointer group thumbnail-container" data-video-src="users/homme1.mp4">
+                        <div class="relative w-full h-40 rounded mb-3 cursor-pointer group thumbnail-container" data-video-src="users/homme1.mp4" data-poster-src="users/homme1.png">
+                            <img src="users/homme1.png" alt="Aperçu Profil Anonyme 1" class="absolute inset-0 w-full h-full object-cover rounded">
                             <div class="absolute inset-0 bg-black bg-opacity-25 group-hover:bg-opacity-40 transition-opacity flex items-center justify-center rounded">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 opacity-75 group-hover:opacity-100 transform group-hover:scale-110 transition-all">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -116,7 +117,8 @@
                     </div>
                     <!-- Mock Profile Card 2 -->
                     <div class="profile-card bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col">
-                        <div class="relative w-full h-40 bg-gray-400 rounded mb-3 cursor-pointer group thumbnail-container" data-video-src="users/homme2.mp4">
+                        <div class="relative w-full h-40 rounded mb-3 cursor-pointer group thumbnail-container" data-video-src="users/homme2.mp4" data-poster-src="users/homme2.png">
+                            <img src="users/homme2.png" alt="Aperçu Profil Anonyme 2" class="absolute inset-0 w-full h-full object-cover rounded">
                             <div class="absolute inset-0 bg-black bg-opacity-25 group-hover:bg-opacity-40 transition-opacity flex items-center justify-center rounded">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 opacity-75 group-hover:opacity-100 transform group-hover:scale-110 transition-all">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -148,17 +150,19 @@
             </section>
 
             <section id="match-notification" class="view hidden">
-                <h2 class="text-3xl sm:text-4xl font-bold text-pink-500 mb-4">🎉 C'est un Match ! 🎉</h2>
-                <p class="text-gray-600 mb-8 text-lg">Quelqu'un est intéressé(e) pour prendre un café avec vous.</p>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-gray-700 mb-4">Traitement en Cours...</h2>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 mx-auto text-purple-500 mb-6 animate-spin">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 14.992 0M2.985 19.644V14.65M16.023 9.348V4.356M21.015 14.65v4.992m0 0h-4.992m4.992 0-3.181-3.183a8.25 8.25 0 0 0-14.992 0m14.992 0h-4.992" />
+                </svg>
+                <p class="text-gray-600 mb-8 text-lg px-4">
+                    Le système analyse vos choix. Vous serez contacté(e) si un match est trouvé.
+                </p>
                  <div class="flex flex-col items-center">
-                    <button data-goto="scheduling" class="btn btn-primary group mb-3">
-                        Planifier la Rencontre
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2 inline-block">
-                           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                    <button data-goto="welcome" class="btn btn-primary group">
+                        Retour à l'accueil
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" />
                         </svg>
-                    </button>
-                    <button data-goto="discovery" class="text-sm text-gray-500 hover:text-pink-500 hover:underline focus:outline-none">
-                        Retour Découverte
                     </button>
                 </div>
             </section>
@@ -179,9 +183,6 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 14.992 0M2.985 19.644V14.65M16.023 9.348V4.356M21.015 14.65v4.992m0 0h-4.992m4.992 0-3.181-3.183a8.25 8.25 0 0 0-14.992 0m14.992 0h-4.992" />
                         </svg>
                     </button>
-                    <button data-goto="match-notification" class="text-sm text-gray-500 hover:text-pink-500 hover:underline focus:outline-none">
-                        Retour
-                    </button>
                 </div>
             </section>
         </main>
@@ -193,15 +194,25 @@
 
     <!-- Video Modal -->
     <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[80vh] flex flex-col overflow-hidden">
-            <video id="modalVideoPlayer" class="w-full h-auto object-contain flex-grow" controls>
-                <!-- Source will be set by JavaScript -->
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden">
+            <video id="modalVideoPlayer" class="w-full h-auto object-contain flex-grow" controls poster="">
+                <!-- Source and poster will be set by JavaScript -->
             </video>
-            <button id="closeModalButton" class="absolute top-4 right-4 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 focus:outline-none">
-                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-gray-800">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-            </button>
+            <div class="p-4 bg-gray-100 flex justify-end space-x-3">
+                <button id="modalLikeButton" class="btn bg-green-500 hover:bg-green-600 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.25c.806 0 1.533-.424 2.002-1.116A4.497 4.497 0 0 1 12 8c1.413 0 2.673.745 3.365 1.917.47.692 1.196 1.117 2.002 1.117H21v4.25a2.25 2.25 0 0 1-2.25 2.25H15M3 10.25V14.5A2.25 2.25 0 0 0 5.25 16.75H9" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.25h3.75M7.5 10.25S9 6.75 12 6.75s4.5 3.5 4.5 3.5M7.5 10.25V16.75" />
+                    </svg>
+                    J'aime
+                </button>
+                <button id="modalCloseButton" class="btn bg-red-500 hover:bg-red-600 text-white">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 mr-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                    Fermer
+                </button>
+            </div>
         </div>
     </div>
 

@@ -95,14 +95,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Video Modal Logic ---
     const videoModal = document.getElementById('videoModal');
     const modalVideoPlayer = document.getElementById('modalVideoPlayer');
-    const closeModalButton = document.getElementById('closeModalButton');
+    const newModalCloseButton = document.getElementById('modalCloseButton');
     const thumbnailContainers = document.querySelectorAll('.thumbnail-container');
 
     thumbnailContainers.forEach(container => {
         container.addEventListener('click', () => {
             const videoSrc = container.getAttribute('data-video-src');
+            const posterSrc = container.getAttribute('data-poster-src');
             if (videoSrc && modalVideoPlayer && videoModal) {
                 modalVideoPlayer.src = videoSrc;
+                if (posterSrc) {
+                    modalVideoPlayer.poster = posterSrc;
+                }
                 videoModal.classList.remove('hidden');
                 modalVideoPlayer.play().catch(error => console.error("Error attempting to play video:", error));
             }
@@ -113,17 +117,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (videoModal && modalVideoPlayer) {
             videoModal.classList.add('hidden');
             modalVideoPlayer.pause();
-            modalVideoPlayer.src = ""; // Important to stop video loading/playing
+            modalVideoPlayer.src = "";
+            modalVideoPlayer.poster = "";
         }
     }
 
-    if (closeModalButton) {
-        closeModalButton.addEventListener('click', closeVideoModal);
+    if (newModalCloseButton) {
+        newModalCloseButton.addEventListener('click', closeVideoModal);
     }
-    // Optional: Close modal by clicking on the backdrop
+    
     if (videoModal) {
         videoModal.addEventListener('click', (event) => {
-            if (event.target === videoModal) { // Only if backdrop itself is clicked
+            if (event.target === videoModal) {
                 closeVideoModal();
             }
         });
